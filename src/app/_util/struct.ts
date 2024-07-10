@@ -4,7 +4,7 @@ export type TagType = {
 };
 
 export type WordsObject = {
-  star: number;
+  star: string;
   tag: string;
   text: string;
 };

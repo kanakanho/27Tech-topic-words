@@ -1,30 +1,46 @@
 "use client";
 
-import { Card } from "./_content/Card";
 import { useEffect, useState } from "react";
+import { Card } from "./_content/Card";
 import { Csv2json } from "./_util/Csv2json";
 import type { WordsObject } from "./_util/struct";
 import "./page.css";
+import "./globals.css";
 
 export default function Home() {
   const csvUrl = process.env.NEXT_PUBLIC_CSV_URL;
-  if (!csvUrl) {
-    console.error("BASE_URL is not defined");
-  }
 
   const [object, setObject] = useState<WordsObject[]>([]);
+  const [viewObject, setViewObject] = useState<WordsObject[]>([]);
 
   useEffect(() => {
     Csv2json(`${csvUrl}`).then((json) => {
-      setObject(json);
+      const object = json.filter((item) => !(item.star === "0"));
+      setObject(object);
     });
   }, [csvUrl]);
 
+  useEffect(() => {
+    if (object.length > 0) {
+      reGenerate();
+    }
+  }, [object]);
+
+  const reGenerate = () => {
+    const newObject = [...object];
+    const shuffleObject = newObject.sort(() => Math.random() - 0.5);
+    shuffleObject.length = 3;
+    setViewObject(shuffleObject);
+  };
+
   return (
     <div className="cardContainer">
-      {object.map((item, index) => (
-        <Card key={index} tag={item.tag} text={item.text} />
+      {viewObject.map((item, index) => (
+        <Card star={item.star} key={index} tag={item.tag} text={item.text} />
       ))}
+      <button type="button" className="reGenerate" onClick={reGenerate}>
+        再生成
+      </button>
     </div>
   );
 }
