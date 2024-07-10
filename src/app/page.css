@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 50px;
+  gap: 10px;
+}

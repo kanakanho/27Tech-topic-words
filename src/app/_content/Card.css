@@ -1,0 +1,14 @@
+.tag {
+  padding: 16px;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.text {
+  display: grid;
+  align-items: center;
+  height: 6rem;
+  padding: 16px;
+  font-size: 1.8rem;
+}
