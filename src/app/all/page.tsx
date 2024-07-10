@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Card } from "../_content/Card";
 import { Csv2json } from "../_util/Csv2json";
 import type { WordsObject } from "../_util/struct";
-import "./page.css";
 import "../globals.css";
 
 export default function Home() {
