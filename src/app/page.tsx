@@ -15,7 +15,9 @@ export default function Home() {
 
   useEffect(() => {
     Csv2json(`${csvUrl}`).then((json) => {
-      const object = json.filter((item) => !(item.star === "0"));
+      const object = json.filter(
+        (item) => item.star !== "" && item.star !== "0" && item.text !== "",
+      );
       setObject(object);
     });
   }, [csvUrl]);
