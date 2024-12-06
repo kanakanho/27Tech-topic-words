@@ -18,6 +18,10 @@ export const Tags: Record<string, TagType> = {
     lightColor: "#8E4EC6",
     darkColor: "#F2D1F3",
   },
+  就活: {
+    lightColor: "#FF5493",
+    darkColor: "#FFD3E1",
+  },
   その他: {
     lightColor: "#8D8D8D",
     darkColor: "#E0E0E0",
